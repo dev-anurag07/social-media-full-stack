@@ -7,7 +7,7 @@ import { getMiniProfile, getChats } from "../utils/apis"
 import { getImageUrl } from "../utils/pp"
 
 const Chats = () => {
-  const { chatId } = useParams()
+  const { chatId } = useParams();
 
   const { user } = useContext(appContext)
 
