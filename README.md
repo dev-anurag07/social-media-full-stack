@@ -36,7 +36,7 @@ A full-stack social/chat application built with **Node.js**, **Express**, **Sock
 | Layer     | Technology              |
 | --------- | ----------------------- |
 | Backend   | Node.js, Express.js     |
-| Database  | MongoDB (Mongoose ORM)  |
+| Database  | MySQL
 | Real‑time | Socket.IO               |
 | Frontend  | React, Context API, CSS |
 | Dev Tools | ESLint, Prettier        |
