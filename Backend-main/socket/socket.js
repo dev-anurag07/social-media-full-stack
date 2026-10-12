@@ -23,10 +23,14 @@ export const getReceiverSocketId = (receiverId) => userSocketMap[receiverId]
 io.on("connection", (socket) => {
   console.log("socket io connected")
 
-  const username = socket.handshake.query.username
-  if (username) {
-    userSocketMap[username] = socket.id
-  }
+ const username = socket.handshake.query.username;
+
+if (username) {
+  userSocketMap[username] = socket.id;
+  console.log("Connected user:", username, socket.id);
+} else {
+  console.log("Socket connected without username:", socket.id);
+}
 
   // io.emit("")
 

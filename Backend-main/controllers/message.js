@@ -60,13 +60,22 @@ export const sendMessage = async (req, res) => {
           time: new Date(),
         }
 
-        // -- Find the receiver's socket ID and send the message --
-        const receiverSocketIds =
-          receiverIds.map((receiverId) => getReceiverSocketId(receiverId)) || []
-        console.log(
-          receiverSocketIds,
-          receiverIds.map((receiverId) => getReceiverSocketId(receiverId))
-        )
+       
+       
+const safeReceiverIds = Array.isArray(receiverIds) ? receiverIds : []
+
+const receiverSocketIds = safeReceiverIds
+  .filter((receiverId) => receiverId !== senderId)
+  .map((receiverId) => getReceiverSocketId(receiverId))
+  .filter(Boolean)
+
+console.log("Receiver usernames:", safeReceiverIds)
+console.log("Receiver socket IDs:", receiverSocketIds)
+
+receiverSocketIds.forEach((socketId) => {
+  io.to(socketId).emit("newMessage", newMessage)
+})
+
 
         if (receiverSocketIds && receiverSocketIds.length > 0) {
           io.to(receiverSocketIds).emit("newMessage", newMessage)
@@ -103,9 +112,9 @@ export const getMessages = async (req, res) => {
         })
       }
     )
-    // const messages = await findMessages(chatId)
+   
 
-    // }
+    
   } catch (error) {
     return res.status(500).json({
       message: "An error occurred while retrieving messages.",

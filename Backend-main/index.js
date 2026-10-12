@@ -15,7 +15,7 @@ dotenv.config()
 
 const port = process.env.PORT || 8000
 
-// Get the directory name
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 

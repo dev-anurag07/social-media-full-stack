@@ -20,11 +20,20 @@ const MessagesView = ({ chatId, receiverIds }) => {
     scrollToBottom()
   }
 
-  const handleSend = () => {
-    if (input.length < 1) return
-    sendMessage(chatId, input, receiverIds)
+  
+const handleSend = async () => {
+  const text = input.trim()
+  if (!text) return
+
+  const res = await sendMessage(chatId, text, receiverIds)
+
+  if (res?.success && res.newMessage) {
+    setMessages((prev) => [...prev, res.newMessage])
     setInput("")
+    scrollToBottom()
   }
+}
+
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView()

@@ -156,7 +156,7 @@ export const login = async (req, res) => {
 
         const token = await jwt.sign({ username: user.username }, process.env.SECRET_KEY)
 
-        console.log(user)
+        
 
         return res.json({
           message: `Welcome back ${user.username}`,
@@ -175,7 +175,7 @@ export const getProfile = async (req, res) => {
   try {
     const username = req.params.id
 
-    // -- Find the user in the database --
+    
     db.query(
       `SELECT name,username, mobileno,email, profile_image FROM User WHERE username=?`,
       [username],
