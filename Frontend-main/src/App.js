@@ -52,7 +52,7 @@ function App() {
 
   const handleNewMessage = async (message) => {}
   const initSocketio = async (username) => {
-    const socketio = io("http://localhost:8000", {
+    const socketio = io("http://32.236.137.160:8000", {
       query: { username },
       transports: ["websocket"],
     })
