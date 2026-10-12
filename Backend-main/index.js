@@ -10,6 +10,12 @@ import path from "path"
 import { fileURLToPath } from "url"
 import isAuthenticated from "./middlewares/isAuthenticated.js"
 import upload from "./middlewares/multer.js"
+import cors from "cors";
+
+app.use(cors({
+  origin: "http://32.236.137.160:3000",
+  credentials: true,
+}));
 
 dotenv.config()
 
