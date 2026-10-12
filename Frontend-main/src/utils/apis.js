@@ -1,4 +1,4 @@
-const baseurl = "http://localhost:8000/api"
+const baseurl = "http://32.236.137.160:8000"
 
 export const login = async (username, password) => {
   try {
