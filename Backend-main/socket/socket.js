@@ -14,7 +14,14 @@ app.use(
 
 const server = http.createServer(app)
 
-const io = new Server(server)
+const io = new Server(server, {
+  cors: {
+    origin: "http://32.236.137.160:3000",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+})
+
 
 let userSocketMap = {}
 
